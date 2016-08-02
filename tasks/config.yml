@@ -3,6 +3,9 @@
   template:
     src: jira-application.properties.j2
     dest: "{{ jira_install_dir }}/{{ jira_version }}/atlassian-jira/WEB-INF/classes/jira-application.properties"
+    owner: "{{ jira_user }}"
+    group: "{{ jira_group }}"
+    mode: 0444
 
 # For HTTPS configuration. Not applied for now
 - name: config > server.xml
@@ -14,7 +17,7 @@
     mode: 0444
 
 - name: config > systemd directory
-  file: path=/etc/systemd/system state-directory
+  file: path=/etc/systemd/system state=directory
 
 - name: config > systemd manifest
   template:

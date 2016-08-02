@@ -13,8 +13,8 @@
 - name: install > extract jira archive
   command: tar --strip-components=1 -zxvf /var/tmp/atlassian-jira-{{ jira_version }}.tar.gz
   args:
-    chdir: "{{ jira_install_id }}/{{ jira_version }}"
-    creates: "{{ jira_install_dir }}/{{ confluence_version }}/LICENSE"
+    chdir: "{{ jira_install_dir }}/{{ jira_version }}"
+    creates: "{{ jira_install_dir }}/{{ jira_version }}/LICENSE"
 
 - name: install > set directory permissions
   file:
