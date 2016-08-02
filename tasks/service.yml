@@ -1,0 +1,3 @@
+---
+- service: name=jira state=started enabled=yes
+  when: jira_manage_service

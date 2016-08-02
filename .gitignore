@@ -1,0 +1,9 @@
+.DS_Store
+.molecule/
+.vagrant/
+*.sw*
+*.retry
+.cache/
+_pycache_
+.ropeproject/
+Gemfile.lock

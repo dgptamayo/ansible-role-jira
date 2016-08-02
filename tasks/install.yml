@@ -1,0 +1,31 @@
+---
+- name: install > download jira
+  get_url:
+    url: "{{ jira_download_base }}/atlassian-jira-software-{{ jira_version }}.tar.gz"
+    dest: "/var/tmp/atlassian-jira-{{ jira_version }}.tar.gz"
+
+- name: install > create jira install directory
+  file:
+    path: "{{ jira_install_dir }}/{{ jira_version }}"
+    state: directory
+    mode: 0755
+
+- name: install > extract jira archive
+  command: tar --strip-components=1 -zxvf /var/tmp/atlassian-jira-{{ jira_version }}.tar.gz
+  args:
+    chdir: "{{ jira_install_id }}/{{ jira_version }}"
+    creates: "{{ jira_install_dir }}/{{ confluence_version }}/LICENSE"
+
+- name: install > set directory permissions
+  file:
+    path: "{{ jira_install_dir }}/{{ jira_version }}"
+    owner: "{{ jira_user }}"
+    group: "{{ jira_group }}"
+    recurse: True
+
+- name: install > create jira home directory
+  file:
+    path: "{{ jira_home }}"
+    state: directory
+    owner: "{{ jira_user }}"
+    group: "{{ jira_group }}"

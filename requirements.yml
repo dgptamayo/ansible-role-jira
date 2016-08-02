@@ -1,0 +1,13 @@
+- src: https://github.com/William-Yeh/ansible-oracle-java
+  version: 2.9.0
+  name: williamyeh.oracle-java
+
+- src: https://github.com/galaxyproject/ansible-postgresql
+  version: master
+  name: galaxyprojectdotorg.postgresql
+
+- src: https://github.com/uoi-io/ansible-haproxy
+  version: master
+  name: uoi-io.haproxy
+
+

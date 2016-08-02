@@ -1,0 +1,10 @@
+---
+jira_version: 7.1.9
+jira_install_dir: /opt/atlassian/jira
+jira_home: /var/atlassian/application-data/jira
+jira_download_base: https://www.atlassian.com/software/jira/downloads/binary
+jira_user: webapp
+jira_group: webapp
+jira_uid: 33000
+jira_gid: 3300
+jira_manage_service: true

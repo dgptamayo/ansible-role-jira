@@ -1,0 +1,15 @@
+---
+- name: user > create jira group
+  group:
+    state: present
+    name: "{{ jira_group }}"
+    gid: "{{ jira_gid }}"
+
+- name: user > create jira user
+  user:
+    state: present
+    name: "{{ jira_user }}"
+    uid: "{{ jira_uid }}"
+    group: "{{ jira_group }}"
+    comment: "JIRA User"
+    shell: /sbin/nologin

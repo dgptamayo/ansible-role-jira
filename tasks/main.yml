@@ -1,0 +1,16 @@
+---
+- name: Check for OS support
+  fail: msg="OS is not supported"
+  when: ansible_os_family != 'RedHat'
+
+  include: user.yml
+
+- name: Vertify if JIRA is already installed
+  stat: path={{ jira_install_dir}}/{{ jira_version }}
+  register: install_path
+  
+  include: install.yml
+  when: install_path.stat.isdir is not defined
+
+  include: config.yml
+  include: service.yml
