@@ -8,7 +8,7 @@ User=webapp
 PIDFile=/opt/atlassian/jira/{{ jira_version }}/work/catalina.pid
 EnvironmentFile=-/etc/sysconfig/jira
 ExecStart=/opt/atlassian/jira/{{ jira_version }}/bin/start-jira.sh
-ExecStop=/opt/atlassian/jira/{{ confluence_version }}/bin/stop-jira.sh
+ExecStop=/opt/atlassian/jira/{{ jira_version }}/bin/stop-jira.sh
 
 [Install]
 WantedBy=multi-user.target

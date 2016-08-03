@@ -52,7 +52,7 @@
     haproxy_stats_user: "admin"
     haproxy_stats_password: "admin"
     haproxy_listen:
-      - confluence:
+      - jira:
           mode: http
           description: JIRA Software
           balance: roundrobin
