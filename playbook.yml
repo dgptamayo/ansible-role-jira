@@ -33,6 +33,8 @@
       become_user: postgres
 
   vars:
+    # NOTE: Use pre-downloaded JIRA package in files/
+    jira_download_from_atlassian: false
     java_version: 8
     java_subversion: 101
     # NOTE: For speedy testing, download jdk-8u92-linux-x64.rpm to files/
@@ -62,4 +64,4 @@
             - server 2m
             - client 2m
           servers:
-          - jira 127.0.0.1:8090 check
+          - jira 127.0.0.1:8080 check
