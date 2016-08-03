@@ -3,11 +3,20 @@
   get_url:
     url: "{{ jira_download_base }}/atlassian-jira-software-{{ jira_version }}.tar.gz"
     dest: "/var/tmp/atlassian-jira-{{ jira_version }}.tar.gz"
+  when: jira_download_from_atlassian
+
+- name: install > copy package from local
+  copy: 
+    src: "{{ playbook_dir }}/files/atlassian-jira-software-{{ jira_version }}.tar.gz"
+    dest: "/var/tmp/atlassian-jira-{{ jira_version }}.tar.gz"
+  when: not jira_download_from_atlassian
 
 - name: install > create jira install directory
   file:
     path: "{{ jira_install_dir }}/{{ jira_version }}"
     state: directory
+    owner: "{{ jira_user }}"
+    group: "{{ jira_group }}"
     mode: 0755
 
 - name: install > extract jira archive
