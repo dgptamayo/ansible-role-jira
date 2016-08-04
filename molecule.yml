@@ -1,0 +1,31 @@
+---
+ansible:
+  playbook: playbook.yml
+  requirements_file: requirements.yml
+
+vagrant:
+  # raw_config_args:
+  # - "proxy.http = 'http://172.28.128.1:3128/'"
+  #  - "proxy.https = 'http://172.28.128.1:3128/'"
+  #  - "proxy.no_proxy = '172.28.128.1'"
+
+  platforms:
+    - name: centos/7
+      box: centos/7
+      box_version: 1605.01
+
+  providers:
+    - name: virtualbox
+      type: virtualbox
+      options:
+        memory: 1536
+        cpus: 2
+
+  instances:
+  - name: jira
+    ansible_groups:
+      - jira
+    interfaces:
+      - network_name: private_network
+        type: dhcp
+        auto_config: true
