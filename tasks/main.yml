@@ -8,7 +8,7 @@
 - name: Vertify if JIRA is already installed
   stat: path={{ jira_install_dir}}/{{ jira_version }}
   register: install_path
-  
+
 - include: install.yml
   when: install_path.stat.isdir is not defined
 

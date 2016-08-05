@@ -9,5 +9,3 @@
 - src: https://github.com/uoi-io/ansible-haproxy
   version: master
   name: uoi-io.haproxy
-
-
