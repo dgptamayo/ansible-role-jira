@@ -2,13 +2,13 @@
 - hosts: all
   become: true
   pre_tasks:
-    # Disable SELinux
-    - command: 'setenforce 0'
-    # Install packages for testing which don't exist in the Vagrant box
-    - yum: name={{ item }} state=present
+    - name: install packages required for testing
+      yum: name={{ item }} state=present
       with_items:
         - libselinux-python
         - net-tools
+    - name: disable selinux during testing
+      selinux: policy=targeted state=permissive
 
   roles:
     - role: galaxyprojectdotorg.postgresql
@@ -17,7 +17,8 @@
     - role: ansible-role-jira
 
   tasks:
-    - yum: name=python-psycopg2 state=present
+    - name: install packages required for managing postgresql
+      yum: name=python-psycopg2 state=present
 
     - name: creating db user '{{ jira_db_user }}'
       postgresql_user:
