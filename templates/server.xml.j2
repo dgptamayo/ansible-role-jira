@@ -51,7 +51,18 @@
     <Service name="Catalina">
 
         <Connector port="8080"
-
+                {% if jira_proxy_name %}
+                   proxyName="{{ jira_proxy_name }}"
+                {% endif %}
+                {% if jira_proxy_port %}
+                   proxyPort="{{ jira_proxy_port }}"
+                {% endif %}
+                {% if jira_proxy_scheme %}
+                   secure="true"
+                   scheme="{{ jira_proxy_scheme }}"
+                {% endif %}
+                   maxThreads="150"
+                   maxThreads="150"
                    maxThreads="150"
                    minSpareThreads="25"
                    connectionTimeout="20000"

@@ -1,3 +1,15 @@
 ---
-- service: name=jira state=started enabled=yes
+- name: service > create systemd jira drop-in directory
+  file: path=/etc/systemd/system state=directory
+
+- name: service > create systemd jira manifest
+  template:
+    src: jira.service.j2
+    dest: "/etc/systemd/system/jira.service"
+    owner: root
+    group: root
+    mode: 0444
+
+- name: service > ensure jira service is started 
+  service: name=jira state=started enabled=yes
   when: jira_manage_service

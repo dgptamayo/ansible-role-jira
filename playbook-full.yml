@@ -1,4 +1,6 @@
 ---
+# Complete playbook which configures JIRA to use PostgreSQL database
+# and HAProxy frontend
 - hosts: all
   become: true
   pre_tasks:

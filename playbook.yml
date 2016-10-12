@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- hosts: jira
   become: true
   pre_tasks:
     - name: install packages required for testing
@@ -16,10 +16,10 @@
 
 
   vars:
-    # NOTE: Use pre-downloaded JIRA package in files/
-    jira_download_from_atlassian: false
     java_version: 8
     java_subversion: 101
-    # NOTE: For speedy testing, download jdk-8u92-linux-x64.rpm to files/
+    # NOTE: download jdk-8u92-linux-x64.rpm to files/ for faster testing
     java_download_from_oracle: false
     jira_manage_service: true
+    # NOTE: download JIRA package in files/ for faster testing
+    jira_download_from_atlassian: false

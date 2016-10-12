@@ -13,3 +13,5 @@
     group: "{{ jira_group }}"
     comment: "JIRA User"
     shell: /sbin/nologin
+    home: "{{ atlassian_data_dir }}/jira"
+    createhome: no

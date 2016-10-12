@@ -32,9 +32,14 @@
     group: "{{ jira_group }}"
     recurse: True
 
+- name: install > create atlassian application home dir
+  file: 
+    path: "{{ atlassian_data_dir }}"
+    state: directory
+
 - name: install > create jira home directory
   file:
-    path: "{{ jira_home }}"
+    path: "{{ atlassian_data_dir }}/jira"
     state: directory
     owner: "{{ jira_user }}"
     group: "{{ jira_group }}"

@@ -1,10 +1,19 @@
 ---
-jira_version: 7.1.9
+atlassian_data_dir: /var/atlassian/application-data
+jira_version: 7.2.2
 jira_install_dir: /opt/atlassian/jira
-jira_home: /var/atlassian/application-data/jira
 jira_download_base: https://www.atlassian.com/software/jira/downloads/binary
-jira_user: webapp
-jira_group: webapp
+jira_user: jira
+jira_group: jira
 jira_uid: 33000
-jira_gid: 3300
+jira_gid: 33000
 jira_manage_service: true
+jira_download_from_remote: true
+jira_jvm_min_mem: "384m"
+jira_jvm_max_mem: "768m"
+jira_jvm_custom_options: []
+jira_proxy_name: false
+jira_proxy_port: false
+jira_proxy_scheme: false
+jira_proxy_noproxy: false
+jira_listen_address: "127.0.0.1"
