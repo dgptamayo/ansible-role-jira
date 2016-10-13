@@ -1,5 +1,5 @@
 - src: https://github.com/William-Yeh/ansible-oracle-java
-  version: 2.9.0
+  version: 2.10.0
   name: williamyeh.oracle-java
 
 - src: https://github.com/galaxyproject/ansible-postgresql

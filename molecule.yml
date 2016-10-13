@@ -6,9 +6,10 @@ ansible:
 
 vagrant:
   raw_config_args:
-    - "proxy.http = 'http://172.28.128.1:3128'"
-    - "proxy.https = 'http://172.28.128.1:3128'"
-    - "proxy.no_proxy = '172.28.128.1'"
+    # Uncomment and define the proxy configuration if required
+    # - "proxy.http = 'http://localhost:3128'"
+    # - "proxy.https = 'http://localhost:3128'"
+    # - "proxy.no_proxy = 'localhost'"
     # Direct to JIRA instance
     - "vm.network 'forwarded_port', guest: 8080, host: 8080"
     # Through HAproxy
@@ -36,3 +37,12 @@ vagrant:
       - network_name: private_network
         type: dhcp
         auto_config: true
+
+verifier:
+  name: serverspec
+
+molecule:
+  ignore_paths:
+    - .git
+    - .vagrant
+    - .molecule

@@ -22,4 +22,3 @@
     owner: "{{ jira_user }}"
     group: "{{ jira_group }}"
     mode: 0444
-

@@ -10,6 +10,6 @@
     group: root
     mode: 0444
 
-- name: service > ensure jira service is started 
+- name: service > ensure jira service is started
   service: name=jira state=started enabled=yes
   when: jira_manage_service

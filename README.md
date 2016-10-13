@@ -29,3 +29,47 @@ An Ansible Role that installs and configures JIRA Software on RHEL/CentOS
 |`jira_proxy_name`| false | All `jira_proxy_*` variables are used for running [JIRA over SSL or HTTPS](https://confluence.atlassian.com/adminjiraserver071/running-jira-applications-over-ssl-or-https-802593051.html)|
 |`jira_proxy_port`|false||
 |`jira_proxy_scheme`|false||
+
+# Example playbook
+```
+---
+- hosts: servers
+  roles:
+  - ansible-role-jira
+```
+## Run the tests
+This role includes [Molecule](http://molecule.readthedocs.io/en/latest/) test framework and uses _Serverspec_ to verify the installation and configuration of JIRA software
+
+Make sure you have the following prerequisites installed:
+
+### Verifier
+- [Serverspec](http://serverspec.org/)
+
+### Driver
+- [Vagrant](http://docs.vagrantup.com/v2)
+
+### Provider
+- [VirtualBox](https://www.virtualbox.org)
+
+Install molecule using pip:
+```
+$ pip install molecule
+```
+
+To set up and test the role:
+
+```
+$ molecule test
+```
+
+## Contributing
+1. Fork it!
+2. Create your feature branch: `git checkout -b my-new-feature`. Make sure to update this `README` file with the description of the new script(s)
+3. Commit your changes: `git commit -am 'New scripts'`
+4. Push to the branch: `git push origin my-new-feature`
+5. Submit a pull request
+
+## License
+Apache 2.0
+
+

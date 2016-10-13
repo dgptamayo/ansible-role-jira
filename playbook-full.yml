@@ -37,7 +37,7 @@
 
   vars:
     # NOTE: Use pre-downloaded JIRA package in files/
-    jira_download_from_atlassian: false
+    jira_download_from_remote: false
     java_version: 8
     java_subversion: 101
     # NOTE: For speedy testing, download jdk-8u92-linux-x64.rpm to files/

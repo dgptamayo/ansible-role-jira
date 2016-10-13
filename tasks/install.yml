@@ -3,13 +3,13 @@
   get_url:
     url: "{{ jira_download_base }}/atlassian-jira-software-{{ jira_version }}.tar.gz"
     dest: "/var/tmp/atlassian-jira-{{ jira_version }}.tar.gz"
-  when: jira_download_from_atlassian
+  when: jira_download_from_remote
 
 - name: install > copy package from local
   copy:
     src: "{{ playbook_dir }}/files/atlassian-jira-software-{{ jira_version }}.tar.gz"
     dest: "/var/tmp/atlassian-jira-{{ jira_version }}.tar.gz"
-  when: not jira_download_from_atlassian
+  when: not jira_download_from_remote
 
 - name: install > create jira install directory
   file:
@@ -19,11 +19,16 @@
     group: "{{ jira_group }}"
     mode: 0755
 
+# NOTE: This uses tar due to issues encountered with
+# .tar.gz archive which seems to be incompatible with
+# Python's tarfile
+# tagged to skip ansible_lint during test
 - name: install > extract jira archive
   command: tar --strip-components=1 -zxvf /var/tmp/atlassian-jira-{{ jira_version }}.tar.gz
   args:
     chdir: "{{ jira_install_dir }}/{{ jira_version }}"
     creates: "{{ jira_install_dir }}/{{ jira_version }}/LICENSE"
+  tags: skip_ansible_lint
 
 - name: install > set directory permissions
   file:
@@ -33,7 +38,7 @@
     recurse: True
 
 - name: install > create atlassian application home dir
-  file: 
+  file:
     path: "{{ atlassian_data_dir }}"
     state: directory
 
@@ -43,3 +48,8 @@
     state: directory
     owner: "{{ jira_user }}"
     group: "{{ jira_group }}"
+
+- name: cleanup atlassian archive
+  file:
+    path: /var/tmp/atlassian-jira-{{ jira_version }}.tar.gz
+    state: absent
