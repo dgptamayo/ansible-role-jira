@@ -1,5 +1,6 @@
 ---
 atlassian_data_dir: /var/atlassian/application-data
+jira_home_dir: jira
 jira_version: 7.2.2
 jira_install_dir: /opt/atlassian/jira
 jira_download_base: https://www.atlassian.com/software/jira/downloads/binary
