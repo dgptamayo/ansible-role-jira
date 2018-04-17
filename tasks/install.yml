@@ -39,11 +39,6 @@
 
 - name: install > create atlassian application home dir
   file:
-    path: "{{ atlassian_data_dir }}"
-    state: directory
-
-- name: install > create jira home directory
-  file:
     path: "{{ atlassian_data_dir }}/{{ jira_home_dir }}"
     state: directory
     owner: "{{ jira_user }}"
